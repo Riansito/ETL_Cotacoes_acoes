@@ -188,24 +188,24 @@ Mesmo em feriados, o pipeline permanece seguro porque:
 project/
 │
 ├── dags/
-│   └── etl_pipeline.py
+│   └── DAGs de orquestração do Airflow
+│
+├── notebooks/
+│   └── Testes e análises exploratórias
 │
 ├── src/
 │   ├── extract.py
 │   ├── transform.py
 │   ├── load.py
-│   └── utils.py
+│   └── Scripts principais do ETL
 │
-├── data/
-│
-├── config/
-│   └── .env
-│
-├── docker-compose.yml
-│
-├── requirements.txt
-│
-└── README.md
+├── .gitignore
+├── .python-version
+├── README.md
+├── docker-compose.yaml
+├── main.py
+├── pyproject.toml
+└── uv.lock
 ```
 
 ---
