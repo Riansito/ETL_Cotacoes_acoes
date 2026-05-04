@@ -48,20 +48,25 @@ Foi desenvolvido um pipeline ETL automatizado capaz de:
 
 # 🏗️ Arquitetura do Projeto
 
-## Fluxo do Pipeline
+O pipeline realiza a coleta diária de dados financeiros do Yahoo Finance, processa as informações utilizando Python e Airflow, armazena os dados no PostgreSQL (Neon) e disponibiliza tudo para análise no Power BI.
+
+## 🔄 Fluxo do Pipeline
 
 ```text
 Yahoo Finance
       ↓
-   Extract
+Extração dos Dados
       ↓
-  Transform
+Transformação e Tratamento
       ↓
-     Load
+Carga no PostgreSQL (Neon)
       ↓
-Neon PostgreSQL
-      ↓
-   Power BI
+Power BI
+````
+
+## 📌 Fluxo Completo da Arquitetura
+
+<img width="1859" height="846" alt="Arquitetura do Projeto" src="https://github.com/user-attachments/assets/ee376890-ea0c-41a6-91d8-26c0ce1eebc2" />
 ```
 
 ---
