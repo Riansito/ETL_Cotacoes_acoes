@@ -92,7 +92,7 @@ def check_data_validation(df, engine, table_name):
         raise ValueError("Dados já existentes no banco!")
 
 
-def load_data(table_name, file_path):
+def load_data(table_name, df):
     """
     Realiza a carga dos dados no PostgreSQL.
 
@@ -114,11 +114,6 @@ def load_data(table_name, file_path):
     logger.info("Iniciando processo de carga dos dados.")
 
     try:
-
-        # Leitura do arquivo parquet
-        df = pd.read_parquet(file_path, engine="pyarrow")
-
-        logger.info(f"Arquivo parquet lido com sucesso: {file_path}")
 
         # Validação dos dados
         check_data_validation(df, engine, table_name)

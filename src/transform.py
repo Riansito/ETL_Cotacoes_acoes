@@ -119,8 +119,7 @@ def transform_data(file_path, file_path_to_save, columns_to_drop):
 
         df = transform_name_tickers(df)
 
-        # Salva DataFrame transformado em parquet
-        df.to_parquet(file_path_to_save, index=False)
+        return df
 
         logger.info(
             f"Transformação concluída com sucesso. "
