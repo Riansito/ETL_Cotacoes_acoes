@@ -67,7 +67,7 @@ Power BI
 ## 📌 Fluxo Completo da Arquitetura
 
 <img width="1859" height="846" alt="Arquitetura do Projeto" src="https://github.com/user-attachments/assets/ee376890-ea0c-41a6-91d8-26c0ce1eebc2" />
-```
+
 
 ---
 
