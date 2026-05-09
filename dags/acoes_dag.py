@@ -45,11 +45,24 @@ transformed_data_file_path = '/opt/airflow/data/transformed_data_tickers.parquet
 # Lista de ações (tickers) que serão coletadas
 # ".SA" indica ações da bolsa brasileira (B3)
 list_tickers = [
-    "PETR4.SA",
-    "VALE3.SA",
-    "ITUB4.SA",
-    "BBDC4.SA",
-    "WEGE3.SA",
+    "PETR4.SA",   # Petrobras
+    "VALE3.SA",   # Vale
+    "ITUB4.SA",   # Itaú Unibanco
+    "BBDC4.SA",   # Bradesco
+    "BBAS3.SA",   # Banco do Brasil
+    "ABEV3.SA",   # Ambev
+    "WEGE3.SA",   # WEG
+    "MGLU3.SA",   # Magazine Luiza
+    "LREN3.SA",   # Lojas Renner
+    "SUZB3.SA",   # Suzano
+    "RENT3.SA",   # Localiza
+    "RAIL3.SA",   # Rumo
+    "GGBR4.SA",   # Gerdau
+    "CSNA3.SA",   # CSN
+    "B3SA3.SA",   # B3
+    "PRIO3.SA",   # PRIO
+    "VIVT3.SA",   # Vivo (Telefônica Brasil)
+    "TIMS3.SA",   # TIM
 ]
 
 
