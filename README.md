@@ -176,6 +176,59 @@ Mesmo em feriados, o pipeline permanece seguro porque:
 
 ---
 
+# 📊 Integração com Power BI
+
+O Power BI conecta diretamente ao PostgreSQL hospedado no Neon, permitindo atualização automática dos dashboards e monitoramento contínuo do mercado financeiro.
+
+O projeto possui duas páginas principais desenvolvidas com foco em análise executiva e inteligência analítica do mercado.
+
+# 📈 Página 1 — Visão Geral de Mercado
+
+A primeira tela possui foco executivo e de monitoramento.
+
+Nela são apresentados:
+
+* KPIs principais do mercado;
+* Volume total negociado;
+* Maiores altas e quedas;
+* Evolução temporal dos preços;
+* Evolução do volume negociado;
+* Análise candlestick;
+* Insights automáticos;
+* Monitoramento geral dos ativos.
+
+O objetivo dessa página é fornecer uma visão rápida e estratégica do comportamento do mercado, permitindo identificar tendências, movimentações relevantes e ativos de destaque.
+
+# 📉 Página 2 — Inteligência de Mercado e Análise de Risco
+
+A segunda tela possui foco analítico e investigativo.
+
+Nela são exploradas análises como:
+
+* Volatilidade dos ativos;
+* Performance percentual;
+* Relação entre risco e retorno;
+* Comparação entre ações;
+* Insights inteligentes automatizados;
+* Análise comportamental dos ativos.
+
+A página utiliza visualizações analíticas como scatter plots e gráficos temporais para auxiliar na identificação de ativos mais arriscados, ativos mais estáveis e possíveis oportunidades de mercado.
+
+O objetivo dessa tela é aprofundar a análise financeira e apoiar tomadas de decisão baseadas em comportamento, risco e performance dos ativos.
+
+
+<p align="center">
+  <img width="48%" alt="Captura de tela 2026-05-12 163857" src="https://github.com/user-attachments/assets/6f8b6840-f1d3-44e6-851c-596eff40e6de" />
+  
+  <img width="48%" alt="Captura de tela 2026-05-12 164938" src="https://github.com/user-attachments/assets/0367b975-b214-4d0c-9398-d78e44561cc8" />
+</p>
+
+<p align="center">
+  <img width="70%" alt="Captura de tela 2026-05-12 164517" src="https://github.com/user-attachments/assets/f238ead0-0ab0-44db-be43-446dc0e6fd14" />
+</p>
+
+---
+
 # 🛠️ Tecnologias Utilizadas
 
 - Python  
@@ -270,19 +323,6 @@ Após acessar o Airflow:
 
 ---
 
-# 📊 Integração com Power BI
-
-O Power BI conecta diretamente no PostgreSQL do Neon.
-
-Isso permite:
-
-* Dashboards em tempo real;
-* Atualização automática;
-* Monitoramento dos ativos financeiros;
-* Análises históricas.
-
----
-
 # ✅ Benefícios do Projeto
 
 * Automação completa do processo;
@@ -293,9 +333,3 @@ Isso permite:
 * Segurança contra dados vazios;
 * Escalabilidade;
 * Atualização automática dos dashboards.
-
----
-
-# 👨‍💻 Autor
-
-Rian Freires da Costa Silva
