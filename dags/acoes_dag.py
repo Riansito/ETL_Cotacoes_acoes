@@ -65,6 +65,27 @@ list_tickers = [
     "TIMS3.SA",   # TIM
 ]
 
+ticker_id_map = {
+    "PETR4": 1,
+    "VALE3": 2,
+    "ITUB4": 3,
+    "BBDC4": 4,
+    "BBAS3": 5,
+    "ABEV3": 6,
+    "WEGE3": 7,
+    "MGLU3": 8,
+    "LREN3": 9,
+    "SUZB3": 10,
+    "RENT3": 11,
+    "RAIL3": 12,
+    "GGBR4": 13,
+    "CSNA3": 14,
+    "B3SA3": 15,
+    "PRIO3": 16,
+    "VIVT3": 17,
+    "TIMS3": 18
+}
+
 
 # ==========================================
 # CONFIGURAÇÕES DA TRANSFORMAÇÃO
@@ -74,7 +95,8 @@ list_tickers = [
 # Essas colunas geralmente vêm vazias ou não serão utilizadas
 columns_to_drop = [
     "Dividends",
-    "Stock Splits"
+    "Stock Splits",
+    "ticker"
 ]
 
 # Data da coleta
@@ -82,7 +104,7 @@ columns_to_drop = [
 date = str(datetime.now().date())
 
 # Nome da tabela que receberá os dados no banco
-table_name = "acoes_financas"
+table_name = "fato_acoes"
 
 
 # ==========================================
@@ -157,7 +179,8 @@ def acoes_pipeline():
         df = transform_data(
             extracted_data_file_path,
             transformed_data_file_path,
-            columns_to_drop
+            columns_to_drop, 
+            ticker_id_map
         )
 
         # Salva os dados transformados em Parquet

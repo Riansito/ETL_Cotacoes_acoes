@@ -79,16 +79,26 @@ def transform_name_tickers(df) -> pd.DataFrame:
 
     return df
 
+def transform_map_tickers(df, ticker_map) -> pd.DataFrame:
 
-def transform_data(file_path, file_path_to_save, columns_to_drop):
+    logger.info("Adicionando os Ids das ações")
+
+    df["Id_Ticker"] = df["ticker"].map(ticker_map)
+
+    return df
+
+
+
+def transform_data(file_path, file_path_to_save, columns_to_drop, ticker_map):
     """
     Executa o pipeline de transformação dos dados.
 
     Etapas:
     - Leitura do CSV extraído
-    - Remoção de colunas desnecessárias
     - Formatação da data
     - Padronização dos tickers
+    - Adição dos Ids dos Tickers
+    - Removendo colunas desnecessárias
     - Persistência em formato parquet
 
     Parameters
@@ -113,18 +123,21 @@ def transform_data(file_path, file_path_to_save, columns_to_drop):
         logger.info(f"Arquivo lido com sucesso: {file_path}")
 
         # Execução das transformações
-        df = transform_drop_columns(df, columns_to_drop)
-
         df = transform_date(df)
 
         df = transform_name_tickers(df)
 
-        return df
+        df = transform_map_tickers(df, ticker_map)
+
+        df = transform_drop_columns(df, columns_to_drop)
 
         logger.info(
             f"Transformação concluída com sucesso. "
             f"Arquivo salvo em: {file_path_to_save}"
         )
+
+        return df
+
 
     except Exception as e:
 
