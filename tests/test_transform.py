@@ -1,13 +1,15 @@
-import pytest
-import pandas as pd
 from unittest.mock import patch
+
+import pandas as pd
+
 from src.transform import (
-    transform_drop_columns,
+    transform_data,
     transform_date,
-    transform_name_tickers,
+    transform_drop_columns,
     transform_map_tickers,
-    transform_data
+    transform_name_tickers,
 )
+
 
 def test_transform_drop_columns():
     df = pd.DataFrame({"A": [1, 2], "B": [3, 4], "C": [5, 6]})

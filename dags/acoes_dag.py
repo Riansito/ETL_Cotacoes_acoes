@@ -1,9 +1,9 @@
-from datetime import datetime, timedelta
-from airflow.decorators import dag, task
-from pathlib import Path
-import sys
-import os
 import json
+import sys
+from datetime import datetime, timedelta
+from pathlib import Path
+
+from airflow.decorators import dag, task
 
 # Adiciona a pasta /src ao PATH do Python
 # Isso permite importar os módulos personalizados
@@ -11,13 +11,12 @@ import json
 sys.path.insert(0, '/opt/airflow/src')
 
 # Importação das funções ETL
-from extract import extract_data
-from load import load_data
-from transform import transform_data
-
 # Biblioteca para carregar variáveis de ambiente
 from dotenv import load_dotenv
 
+from extract import extract_data
+from load import load_data
+from transform import transform_data
 
 # Caminho do arquivo .env
 # O .env normalmente contém credenciais sensíveis,

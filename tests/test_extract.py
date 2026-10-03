@@ -1,7 +1,10 @@
-import pytest
+from unittest.mock import MagicMock, patch
+
 import pandas as pd
-from unittest.mock import patch, MagicMock
+import pytest
+
 from src.extract import extract_data
+
 
 @patch("src.extract.yf.Ticker")
 @patch("src.extract.pd.DataFrame.to_csv")

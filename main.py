@@ -1,12 +1,11 @@
+import json
 import logging
 from datetime import datetime
 from pathlib import Path
-import json
-import pandas as pd
+
 from src.extract import extract_data
 from src.load import load_data
 from src.transform import transform_data
-
 
 # Configuração de logs
 logging.basicConfig(
