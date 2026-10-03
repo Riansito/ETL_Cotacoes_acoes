@@ -238,6 +238,11 @@ O objetivo dessa tela é aprofundar a análise financeira e apoiar tomadas de de
 - PostgreSQL (Neon Database)  
 - Power BI  
 - yfinance  
+- uv (Gerenciador de pacotes)
+- Ruff (Linting e Formatação)
+- pytest (Testes unitários)
+- Pandera (Validação de schema de dados)
+- GitHub Actions (CI/CD)
 ---
 
 # 📂 Estrutura do Projeto
@@ -256,6 +261,13 @@ project/
 │   ├── transform.py
 │   ├── load.py
 │   └── Scripts principais do ETL
+│
+├── tests/
+│   └── Testes unitários e de mock
+│
+├── .github/
+│   └── workflows/
+│       └── ci.yml (Pipeline CI/CD)
 │
 ├── .gitignore
 ├── .python-version
