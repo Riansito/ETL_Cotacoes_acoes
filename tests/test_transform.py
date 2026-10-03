@@ -39,6 +39,10 @@ def test_transform_data(mock_read_csv):
         "Date": ["2023-01-01 10:00:00"],
         "ticker": ["PETR4.SA"],
         "Open": [10.0],
+        "High": [11.0],
+        "Low": [9.0],
+        "Close": [10.5],
+        "Volume": [1000],
         "drop_me": [1]
     })
     mock_read_csv.return_value = mock_df

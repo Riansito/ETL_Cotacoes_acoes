@@ -1,7 +1,8 @@
 import logging
 
 import pandas as pd
-
+import pandera as pa
+from pandera import Column, DataFrameSchema
 # Configuração de logs
 logging.basicConfig(
     level=logging.INFO,
@@ -9,6 +10,22 @@ logging.basicConfig(
 )
 
 logger = logging.getLogger(__name__)
+
+
+TransformSchema = DataFrameSchema(
+    {
+        "Date": Column(object),
+        "ticker": Column(str),
+        "Id_Ticker": Column(float, nullable=True),
+        "Open": Column(float, nullable=True),
+        "High": Column(float, nullable=True),
+        "Low": Column(float, nullable=True),
+        "Close": Column(float, nullable=True),
+        "Volume": Column(float, nullable=True),
+    },
+    coerce=True,
+    strict=False,
+)
 
 
 def transform_drop_columns(df, columns_to_drop) -> pd.DataFrame:
@@ -130,6 +147,9 @@ def transform_data(file_path, file_path_to_save, columns_to_drop, ticker_map):
         df = transform_map_tickers(df, ticker_map)
 
         df = transform_drop_columns(df, columns_to_drop)
+
+        logger.info("Validando schema dos dados com Pandera.")
+        df = TransformSchema.validate(df)
 
         logger.info(
             f"Transformação concluída com sucesso. "
