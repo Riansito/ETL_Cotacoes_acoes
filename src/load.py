@@ -49,8 +49,7 @@ def get_engine():
     return create_engine(url)
 
 
-# Instância global do engine
-engine = get_engine()
+
 
 
 def check_data_validation(df, engine, table_name):
@@ -114,6 +113,9 @@ def load_data(table_name, df):
     logger.info("Iniciando processo de carga dos dados.")
 
     try:
+
+        # Cria a conexão com o banco de dados apenas na hora de usar
+        engine = get_engine()
 
         # Validação dos dados
         check_data_validation(df, engine, table_name)
