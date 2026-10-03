@@ -50,7 +50,12 @@ def test_transform_data(mock_read_csv):
     ticker_map = {"PETR4": 1}
     columns_to_drop = ["drop_me"]
     
-    df_result = transform_data("input.csv", "output.parquet", columns_to_drop, ticker_map)
+    df_result = transform_data(
+        "input.csv",
+        "output.parquet",
+        columns_to_drop,
+        ticker_map
+    )
     
     # Verifica transformações
     assert df_result["Date"].iloc[0] == pd.to_datetime("2023-01-01").date()

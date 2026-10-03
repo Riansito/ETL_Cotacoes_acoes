@@ -1,8 +1,8 @@
 import logging
 
 import pandas as pd
-import pandera as pa
 from pandera import Column, DataFrameSchema
+
 # Configuração de logs
 logging.basicConfig(
     level=logging.INFO,
