@@ -3,6 +3,7 @@ from airflow.decorators import dag, task
 from pathlib import Path
 import sys
 import os
+import json
 
 # Adiciona a pasta /src ao PATH do Python
 # Isso permite importar os módulos personalizados
@@ -42,49 +43,14 @@ transformed_data_file_path = '/opt/airflow/data/transformed_data_tickers.parquet
 # CONFIGURAÇÕES DA EXTRAÇÃO
 # ==========================================
 
-# Lista de ações (tickers) que serão coletadas
-# ".SA" indica ações da bolsa brasileira (B3)
-list_tickers = [
-    "PETR4.SA",   # Petrobras
-    "VALE3.SA",   # Vale
-    "ITUB4.SA",   # Itaú Unibanco
-    "BBDC4.SA",   # Bradesco
-    "BBAS3.SA",   # Banco do Brasil
-    "ABEV3.SA",   # Ambev
-    "WEGE3.SA",   # WEG
-    "MGLU3.SA",   # Magazine Luiza
-    "LREN3.SA",   # Lojas Renner
-    "SUZB3.SA",   # Suzano
-    "RENT3.SA",   # Localiza
-    "RAIL3.SA",   # Rumo
-    "GGBR4.SA",   # Gerdau
-    "CSNA3.SA",   # CSN
-    "B3SA3.SA",   # B3
-    "PRIO3.SA",   # PRIO
-    "VIVT3.SA",   # Vivo (Telefônica Brasil)
-    "TIMS3.SA",   # TIM
-]
+# Carrega as configurações dos tickers a partir do arquivo config.json
+config_file_path = Path(__file__).resolve().parent.parent / 'config' / 'config.json'
 
-ticker_id_map = {
-    "PETR4": 1,
-    "VALE3": 2,
-    "ITUB4": 3,
-    "BBDC4": 4,
-    "BBAS3": 5,
-    "ABEV3": 6,
-    "WEGE3": 7,
-    "MGLU3": 8,
-    "LREN3": 9,
-    "SUZB3": 10,
-    "RENT3": 11,
-    "RAIL3": 12,
-    "GGBR4": 13,
-    "CSNA3": 14,
-    "B3SA3": 15,
-    "PRIO3": 16,
-    "VIVT3": 17,
-    "TIMS3": 18
-}
+with open(config_file_path, 'r', encoding='utf-8') as f:
+    config_data = json.load(f)
+
+list_tickers = config_data["list_tickers"]
+ticker_id_map = config_data["ticker_id_map"]
 
 
 # ==========================================
@@ -98,10 +64,6 @@ columns_to_drop = [
     "Stock Splits",
     "ticker"
 ]
-
-# Data da coleta
-# datetime.now().date() pega apenas a data atual
-date = str(datetime.now().date())
 
 # Nome da tabela que receberá os dados no banco
 table_name = "fato_acoes"
@@ -157,8 +119,12 @@ def acoes_pipeline():
     # ==========================================
     
     @task
-    def extract():
+    def extract(**kwargs):
         
+        # Acessa a data lógica da execução através do contexto do Airflow (kwargs)
+        # 'ds' é a string de data no formato YYYY-MM-DD
+        date = kwargs.get('ds')
+
         # Realiza a coleta dos dados das ações
         # e salva em CSV
         extract_data(
